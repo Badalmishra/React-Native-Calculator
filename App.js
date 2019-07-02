@@ -14,18 +14,20 @@ export default class FlexDirectionBasics extends Component {
   evalStringConcat(input){
     if (this.state.evalString=="0") {
       this.setState({
-        evalString:""
+        evalString:"",
+        middle:""
       },()=>{
-        this.setState({
+        this.setState({          
           evalString:this.state.evalString+""+input,
           middle:this.state.middle+""+input,
-        })
+        },()=>{console.log(this.state.evalString+" "+this.state.middle);})
       })
     } else {
+      console.log(this.state.evalString);
       this.setState({
         evalString:this.state.evalString+""+input,
         middle:this.state.middle+""+input,
-      })
+      },()=>{console.log(this.state.evalString+" "+this.state.middle);})
     }
   }
   upAction(input){
@@ -38,7 +40,7 @@ export default class FlexDirectionBasics extends Component {
         }
         break;
       case "C":
-        this.setState({evalString:""})
+        this.setState({evalString:"",middle:"",result:""})
         break;
       case "=":
         let val = this.state.middle;
